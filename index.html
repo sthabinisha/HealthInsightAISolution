@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HealthInsight AI Solutions — Healthcare AI for Underserved Providers</title>
+<meta name="description" content="HealthInsight AI Solutions brings secure, interoperable, HIPAA-aligned AI analytics to community health centers, rural hospitals, and independent practices across the United States.">
+<meta property="og:title" content="HealthInsight AI Solutions">
+<meta property="og:description" content="Healthcare AI built for the providers everyone else overlooks. Serving FQHCs, rural hospitals, and independent practices.">
+<meta property="og:url" content="https://healthinsightaisolutions.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0B1930;--navy2:#132240;--navy3:#1A2E52;
+  --green:#0B6B50;--green2:#0E8264;--green3:#E5F3EF;
+  --amber:#C47A18;--amber2:#E08E1E;--amberL:#FDF0DC;
+  --teal:#1B7A8F;--tealL:#E4F3F6;
+  --white:#FFFFFF;--offW:#F8FAFB;--light:#EFF3F8;
+  --bdr:#DDE5EE;--bdr2:#C9D5E2;
+  --txt:#0B1930;--txtM:#445A70;--txtL:#7A94A8;
+  --serif:'DM Serif Display',Georgia,serif;
+  --sans:'DM Sans',system-ui,sans-serif;
+  --r:12px;--rsm:8px;
+  --sh:0 2px 12px rgba(11,25,48,.07);
+  --shM:0 8px 32px rgba(11,25,48,.12);
+  --shL:0 20px 60px rgba(11,25,48,.16);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:68px}
+body{font-family:var(--sans);color:var(--txt);background:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+.container{max-width:1140px;margin:0 auto;padding:0 24px}
+section{padding:96px 0}
+h2{font-family:var(--serif);font-style:italic;font-size:clamp(2rem,4vw,2.8rem);line-height:1.15;letter-spacing:-.02em;color:var(--navy)}
+h3{font-size:1.1rem;font-weight:600;color:var(--navy);line-height:1.3}
+p{color:var(--txtM);line-height:1.75}
+.slabel{display:inline-block;font-size:.7rem;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--green);margin-bottom:12px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:6px;font-size:.9rem;font-weight:500;cursor:pointer;border:none;transition:all .18s;font-family:var(--sans)}
+.btn-amber{background:var(--amber);color:#fff}.btn-amber:hover{background:var(--amber2);transform:translateY(-1px);box-shadow:0 6px 20px rgba(196,122,24,.35)}
+.btn-wht{background:rgba(255,255,255,.1);color:#fff;border:1.5px solid rgba(255,255,255,.25)}.btn-wht:hover{background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.5)}
+.btn-dark{background:var(--navy);color:#fff}.btn-dark:hover{background:var(--navy2)}
+.chip{display:inline-block;background:var(--light);color:var(--txtM);font-size:.73rem;font-weight:500;padding:4px 10px;border-radius:20px}
+/* ── NAV ── */
+#nav{position:fixed;top:0;left:0;right:0;z-index:200;transition:background .25s,box-shadow .25s}
+#nav.scrolled{background:rgba(11,25,48,.97);backdrop-filter:blur(14px);box-shadow:0 1px 0 rgba(255,255,255,.06)}
+.ni{max-width:1140px;margin:0 auto;padding:0 24px;height:68px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:10px}
+.licon{width:34px;height:34px;background:linear-gradient(135deg,var(--green),var(--green2));border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.licon svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2.2;stroke-linecap:round}
+.ltxt{font-size:.97rem;font-weight:600;color:#fff;letter-spacing:-.01em}
+.ltxt span{font-weight:400;color:rgba(255,255,255,.45)}
+.nl{display:flex;align-items:center;gap:32px}
+.nl a{font-size:.85rem;color:rgba(255,255,255,.6);transition:color .15s}.nl a:hover{color:#fff}
+.ncta{font-size:.85rem;padding:9px 20px;background:var(--amber);color:#fff;border-radius:6px;font-weight:500;transition:all .18s}.ncta:hover{background:var(--amber2)}
+.hbg{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hbg span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:all .2s}
+.mmenu{display:none;background:var(--navy);padding:8px 0 16px}
+.mmenu a{display:block;padding:12px 24px;color:rgba(255,255,255,.7);font-size:.93rem;border-bottom:1px solid rgba(255,255,255,.04)}
+.mmenu .mcta{background:var(--amber);color:#fff;margin:12px 16px 0;border-radius:6px;text-align:center;border:none;padding:12px}
+/* ── HERO ── */
+#hero{min-height:100vh;display:flex;align-items:center;background:var(--navy);padding:100px 0 72px;position:relative;overflow:hidden}
+.hbg-grad{position:absolute;inset:0;background:radial-gradient(ellipse 70% 80% at 75% 45%,var(--navy3) 0%,transparent 60%),linear-gradient(155deg,var(--navy) 0%,#070F1E 100%)}
+.hbg-grid{position:absolute;inset:0;opacity:.06;background-image:linear-gradient(rgba(255,255,255,.4) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.4) 1px,transparent 1px);background-size:48px 48px}
+.hbg-orb{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none}
+.orb1{width:400px;height:400px;right:-80px;top:-80px;background:rgba(11,107,80,.18)}
+.orb2{width:300px;height:300px;right:200px;bottom:100px;background:rgba(27,122,143,.12)}
+.hcont{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.htxt .htag{display:inline-flex;align-items:center;gap:8px;background:rgba(11,107,80,.18);border:1px solid rgba(11,107,80,.3);color:#5EC9A8;font-size:.73rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:28px}
+.htag::before{content:'';width:6px;height:6px;background:#5EC9A8;border-radius:50%;animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.htitle{font-family:var(--serif);font-style:italic;font-size:clamp(2.6rem,5vw,4rem);color:#fff;line-height:1.1;letter-spacing:-.02em;margin-bottom:24px}
+.htitle em{color:#7ED4BE;font-style:italic}
+.hsub{font-size:1.05rem;color:rgba(255,255,255,.55);line-height:1.78;margin-bottom:40px;max-width:500px}
+.hbtns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:56px}
+.hstats{display:grid;grid-template-columns:repeat(3,1fr);gap:0;padding-top:40px;border-top:1px solid rgba(255,255,255,.08)}
+.hstat strong{display:block;font-size:1.8rem;font-weight:600;color:#fff;letter-spacing:-.03em}
+.hstat span{font-size:.73rem;color:rgba(255,255,255,.38);text-transform:uppercase;letter-spacing:.07em;line-height:1.4}
+.hstat:not(:last-child){padding-right:24px;border-right:1px solid rgba(255,255,255,.08);margin-right:24px}
+/* Hero visual — AI connectivity diagram */
+.hvisual{position:relative;display:flex;align-items:center;justify-content:center}
+.hvisual svg{width:100%;max-width:440px;height:auto;overflow:visible}
+/* ── TRUST BAR ── */
+#trust{background:var(--navy2);padding:24px 0;border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06)}
+.trust-inner{display:flex;align-items:center;justify-content:center;gap:48px;flex-wrap:wrap}
+.titem{display:flex;align-items:center;gap:10px;color:rgba(255,255,255,.5);font-size:.82rem}
+.titem svg{width:16px;height:16px;stroke:rgba(255,255,255,.4);fill:none;stroke-width:1.8;stroke-linecap:round;flex-shrink:0}
+.tdiv{width:1px;height:20px;background:rgba(255,255,255,.08)}
+/* ── DIVIDE ── */
+#divide{background:var(--offW)}
+.div-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+.div-text h2{margin-bottom:18px}
+.div-text p{margin-bottom:16px}
+.div-quote{background:var(--white);border:1px solid var(--bdr);border-left:4px solid var(--amber);border-radius:var(--rsm);padding:20px 22px;margin-top:24px}
+.div-quote p{font-style:italic;font-size:.93rem;color:var(--txt);margin:0}
+.div-quote cite{display:block;font-size:.78rem;color:var(--txtL);margin-top:8px;font-style:normal}
+/* AI Access Chart */
+.access-chart{background:var(--white);border:1px solid var(--bdr);border-radius:var(--r);padding:28px;box-shadow:var(--sh)}
+.chart-title{font-size:.8rem;font-weight:600;color:var(--navy);text-transform:uppercase;letter-spacing:.07em;margin-bottom:20px}
+.cbar-row{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.cbar-label{font-size:.8rem;color:var(--txtM);width:190px;flex-shrink:0;line-height:1.3}
+.cbar-track{flex:1;height:10px;background:var(--light);border-radius:5px;overflow:hidden}
+.cbar-fill{height:100%;border-radius:5px;transition:width 1.4s cubic-bezier(.2,.8,.3,1)}
+.cbar-pct{font-size:.78rem;font-weight:600;color:var(--navy);width:36px;text-align:right;flex-shrink:0}
+.chart-note{font-size:.73rem;color:var(--txtL);margin-top:16px;font-style:italic}
+/* ── STATS ── */
+#stats{background:var(--navy);padding:80px 0}
+.stats-hd{text-align:center;margin-bottom:56px}
+.stats-hd .slabel{color:#5EC9A8}
+.stats-hd h2{color:#fff}
+.stats-hd p{color:rgba(255,255,255,.5);max-width:540px;margin:12px auto 0}
+.sgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(255,255,255,.05);border-radius:var(--r);overflow:hidden}
+.scard{background:var(--navy2);padding:36px 28px;text-align:center;transition:background .2s}
+.scard:hover{background:var(--navy3)}
+.snum{font-family:var(--serif);font-style:italic;font-size:2.8rem;color:#fff;line-height:1;letter-spacing:-.02em;margin-bottom:8px}
+.snum em{color:#5EC9A8;font-style:italic}
+.sdesc{font-size:.83rem;color:rgba(255,255,255,.45);line-height:1.5}
+.ssrc{font-size:.7rem;color:rgba(255,255,255,.2);margin-top:6px;font-style:italic}
+/* ── FEDERAL ALIGNMENT ── */
+#align{background:var(--white)}
+.align-hd{text-align:center;max-width:600px;margin:0 auto 56px}
+.align-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.acard{border:1px solid var(--bdr);border-radius:var(--r);padding:32px;position:relative;overflow:hidden;transition:box-shadow .2s}
+.acard:hover{box-shadow:var(--shM)}
+.acard::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--green)}
+.acard-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;background:var(--green3)}
+.acard-icon svg{width:20px;height:20px;stroke:var(--green);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.acard h3{margin-bottom:10px;font-size:1rem}
+.acard p{font-size:.88rem;line-height:1.65;margin-bottom:16px}
+.acard-pills{display:flex;flex-wrap:wrap;gap:6px}
+.acard-pill{background:var(--green3);color:var(--green);font-size:.72rem;font-weight:500;padding:3px 10px;border-radius:4px}
+/* ── SERVICES ── */
+#services{background:var(--offW)}
+.svc-hd{text-align:center;max-width:580px;margin:0 auto 56px}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.svc-card{background:var(--white);border:1px solid var(--bdr);border-radius:var(--r);padding:36px 30px;position:relative;overflow:hidden;transition:all .22s}
+.svc-card:hover{box-shadow:var(--shM);transform:translateY(-4px)}
+.svc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--amber);transform:scaleX(0);transform-origin:left;transition:transform .25s}
+.svc-card:hover::before{transform:scaleX(1)}
+.svc-icon{width:50px;height:50px;border-radius:12px;background:var(--green3);display:flex;align-items:center;justify-content:center;margin-bottom:22px}
+.svc-icon svg{width:22px;height:22px;stroke:var(--green);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.svc-card h3{margin-bottom:12px}
+.svc-card > p{font-size:.9rem;line-height:1.7;margin-bottom:18px}
+.svc-metric{background:var(--amberL);border-radius:var(--rsm);padding:10px 14px;margin-bottom:16px}
+.svc-metric strong{display:block;font-size:1.1rem;color:var(--amber);font-weight:600;line-height:1}
+.svc-metric span{font-size:.75rem;color:var(--amber);opacity:.75}
+.svc-chips{display:flex;flex-wrap:wrap;gap:7px}
+/* ── IMPACT ── */
+#impact{background:var(--white)}
+.impact-hd{text-align:center;max-width:580px;margin:0 auto 56px}
+.impact-tabs{display:flex;gap:8px;justify-content:center;margin-bottom:40px;flex-wrap:wrap}
+.itab{padding:8px 18px;border-radius:20px;font-size:.84rem;font-weight:500;cursor:pointer;border:1.5px solid var(--bdr);background:transparent;color:var(--txtM);transition:all .15s;font-family:var(--sans)}
+.itab.active,.itab:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
+.impact-panel{display:none}
+.impact-panel.active{display:grid;grid-template-columns:1fr 1fr;gap:24px;animation:fadeUp .3s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.ip-before{background:var(--offW);border:1px solid var(--bdr);border-radius:var(--r);padding:28px}
+.ip-after{background:var(--green3);border:1px solid rgba(11,107,80,.15);border-radius:var(--r);padding:28px}
+.ip-label{font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px}
+.ip-before .ip-label{color:var(--txtL)}
+.ip-after .ip-label{color:var(--green)}
+.ip-before h3,.ip-after h3{font-size:1.05rem;margin-bottom:10px}
+.ip-before p,.ip-after p{font-size:.9rem;line-height:1.65}
+.ip-impact{border-top:1px solid rgba(11,107,80,.15);margin-top:16px;padding-top:16px}
+.ip-impact strong{display:block;font-size:1.35rem;color:var(--green);font-weight:600;letter-spacing:-.02em}
+.ip-impact span{font-size:.78rem;color:var(--green);opacity:.75}
+/* ── ROADMAP ── */
+#roadmap{background:var(--navy);padding:96px 0}
+.rm-hd{text-align:center;margin-bottom:72px}
+.rm-hd .slabel{color:#5EC9A8}
+.rm-hd h2{color:#fff}
+.rm-hd p{color:rgba(255,255,255,.45);max-width:520px;margin:12px auto 0}
+.rm-timeline{display:grid;grid-template-columns:repeat(5,1fr);gap:0;position:relative}
+.rm-timeline::before{content:'';position:absolute;top:36px;left:10%;right:10%;height:1px;background:rgba(255,255,255,.1)}
+.rm-phase{text-align:center;padding:0 12px;position:relative}
+.rm-dot{width:72px;height:72px;border-radius:50%;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:2px;position:relative;z-index:1;transition:all .2s;cursor:default}
+.rm-dot-inactive{background:var(--navy2);border:2px solid rgba(255,255,255,.1)}
+.rm-dot-active{background:linear-gradient(135deg,var(--green),var(--green2));border:2px solid rgba(255,255,255,.15);box-shadow:0 0 0 6px rgba(11,107,80,.15)}
+.rm-dot span{font-size:.68rem;font-weight:600;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.06em}
+.rm-dot strong{font-size:1.05rem;font-weight:600;color:#fff}
+.rm-dot-active .rm-dot strong{color:#fff}
+.rm-time{font-size:.7rem;color:rgba(255,255,255,.3);letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px}
+.rm-title{font-size:.95rem;font-weight:600;color:#fff;margin-bottom:8px}
+.rm-desc{font-size:.8rem;color:rgba(255,255,255,.38);line-height:1.55}
+.rm-note{margin-top:56px;text-align:center;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:var(--r);padding:28px;max-width:700px;margin-left:auto;margin-right:auto}
+.rm-note p{color:rgba(255,255,255,.5);font-size:.9rem;font-style:italic}
+/* ── SERVE ── */
+#serve{background:var(--offW)}
+.serve-hd{text-align:center;max-width:560px;margin:0 auto 48px}
+.serve-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.svc2{background:var(--white);border:1px solid var(--bdr);border-radius:var(--r);padding:28px 28px 28px 24px;display:flex;gap:18px;transition:box-shadow .2s}
+.svc2:hover{box-shadow:var(--shM)}
+.s2icon{width:44px;height:44px;border-radius:10px;background:var(--navy);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.s2icon svg{width:20px;height:20px;stroke:rgba(255,255,255,.8);fill:none;stroke-width:1.8;stroke-linecap:round}
+.svc2 h3{margin-bottom:7px}
+.svc2 p{font-size:.88rem;line-height:1.65}
+.serve-callout{text-align:center;margin-top:36px;padding:24px;background:var(--green3);border-radius:var(--r);border:1px solid rgba(11,107,80,.12)}
+.serve-callout p{font-style:italic;color:var(--green);font-size:.93rem}
+/* ── PLATFORM ── */
+#platform{background:var(--white)}
+.plat-hd{text-align:center;max-width:560px;margin:0 auto 52px}
+.plat-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:32px}
+.pblock{background:var(--offW);border:1px solid var(--bdr);border-radius:var(--r);padding:28px}
+.pblock h3{font-size:.95rem;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.pdot{width:8px;height:8px;border-radius:50%;background:var(--green);flex-shrink:0}
+.pblock p{font-size:.86rem;line-height:1.65}
+.ptags{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.ptag{background:var(--navy);color:rgba(255,255,255,.75);font-size:.78rem;padding:7px 15px;border-radius:20px;font-weight:500}
+/* ── INSIGHTS ── */
+#insights{background:var(--offW)}
+.ins-hd{text-align:center;max-width:540px;margin:0 auto 48px}
+.ins-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.ins-card{background:var(--white);border:1px solid var(--bdr);border-radius:var(--r);overflow:hidden;transition:box-shadow .2s}
+.ins-card:hover{box-shadow:var(--shM)}
+.ins-cover{height:10px;background:var(--navy)}
+.ins-cover.c1{background:linear-gradient(90deg,var(--green),var(--teal))}
+.ins-cover.c2{background:linear-gradient(90deg,var(--amber),#E05C00)}
+.ins-cover.c3{background:linear-gradient(90deg,var(--navy),var(--navy3))}
+.ins-body{padding:28px}
+.ins-cat{font-size:.7rem;font-weight:600;color:var(--green);text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px}
+.ins-body h3{font-size:1rem;margin-bottom:10px;line-height:1.35}
+.ins-body p{font-size:.86rem;line-height:1.65;margin-bottom:16px}
+.ins-link{font-size:.82rem;font-weight:600;color:var(--navy);display:flex;align-items:center;gap:6px}
+.ins-link svg{width:14px;height:14px;stroke:var(--navy);fill:none;stroke-width:2;stroke-linecap:round}
+/* ── ABOUT ── */
+#about{background:var(--white)}
+.about-grid{display:grid;grid-template-columns:340px 1fr;gap:72px;align-items:start}
+.about-card{background:var(--offW);border:1px solid var(--bdr);border-radius:var(--r);padding:36px;text-align:center}
+.ab-circle{width:100px;height:100px;border-radius:50%;background:linear-gradient(135deg,var(--navy),var(--navy3));margin:0 auto 16px;display:flex;align-items:center;justify-content:center;border:4px solid var(--white);box-shadow:var(--shM)}
+.ab-init{font-family:var(--serif);font-style:italic;font-size:2.2rem;color:#fff}
+.ab-name{font-size:1.05rem;font-weight:600;color:var(--navy);margin-bottom:4px}
+.ab-title{font-size:.85rem;color:var(--txtL);margin-bottom:20px}
+.ab-creds{text-align:left;display:flex;flex-direction:column;gap:8px}
+.cred{background:var(--white);border:1px solid var(--bdr);border-radius:var(--rsm);padding:9px 12px;font-size:.82rem;color:var(--txtM);display:flex;align-items:flex-start;gap:8px}
+.cred::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0;margin-top:5px}
+.about-txt h2{margin-bottom:18px}
+.about-txt p{margin-bottom:14px}
+.hubcap-box{background:var(--navy);border-radius:var(--r);padding:28px;margin:20px 0}
+.hubcap-box h3{color:#fff;margin-bottom:10px;font-size:1rem}
+.hubcap-box p{color:rgba(255,255,255,.55);font-size:.88rem;line-height:1.65}
+.hubcap-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.hbtag{background:rgba(255,255,255,.07);color:rgba(255,255,255,.65);font-size:.73rem;padding:4px 10px;border-radius:4px}
+.about-highlights{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.ahl{background:var(--light);border:1px solid var(--bdr);border-radius:var(--rsm);padding:6px 12px;font-size:.78rem;color:var(--navy);font-weight:500}
+/* ── CONTACT ── */
+#contact{background:var(--navy);padding:96px 0}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.ct-text .slabel{color:#5EC9A8}
+.ct-text h2{color:#fff;margin-bottom:16px}
+.ct-text > p{color:rgba(255,255,255,.5);margin-bottom:36px;font-size:1rem;line-height:1.75}
+.cinfo{display:flex;flex-direction:column;gap:16px}
+.ci{display:flex;align-items:flex-start;gap:14px}
+.ci-icon{width:40px;height:40px;border-radius:8px;background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ci-icon svg{width:18px;height:18px;stroke:rgba(255,255,255,.55);fill:none;stroke-width:1.8;stroke-linecap:round}
+.ci strong{display:block;font-size:.74rem;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.08em;margin-bottom:2px;font-weight:500}
+.ci a,.ci span{font-size:.93rem;color:rgba(255,255,255,.75)}
+.ci a:hover{color:#fff}
+.cform{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--r);padding:40px}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.fg{margin-bottom:16px}
+.fg label{display:block;font-size:.75rem;font-weight:500;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.07em;margin-bottom:7px}
+.fg input,.fg select,.fg textarea{width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--rsm);padding:12px 14px;font-size:.9rem;color:#fff;font-family:var(--sans);outline:none;transition:border-color .15s}
+.fg input::placeholder,.fg textarea::placeholder{color:rgba(255,255,255,.22)}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:rgba(196,122,24,.5)}
+.fg select{cursor:pointer}.fg select option{background:var(--navy)}
+.fg textarea{resize:vertical;min-height:100px}
+.fsub{width:100%;padding:14px;background:var(--amber);color:#fff;border:none;border-radius:var(--rsm);font-size:.95rem;font-weight:600;cursor:pointer;font-family:var(--sans);transition:all .18s}
+.fsub:hover{background:var(--amber2)}
+/* ── FOOTER ── */
+footer{background:#060E1C;padding:56px 0 28px}
+.fi{display:flex;justify-content:space-between;gap:40px;margin-bottom:48px;flex-wrap:wrap}
+.fb p{font-size:.83rem;color:rgba(255,255,255,.28);margin-top:12px;max-width:280px;line-height:1.65}
+.fl h4{font-size:.72rem;font-weight:600;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.1em;margin-bottom:14px}
+.fl ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.fl ul a{font-size:.85rem;color:rgba(255,255,255,.38);transition:color .15s}.fl ul a:hover{color:rgba(255,255,255,.8)}
+.fbot{border-top:1px solid rgba(255,255,255,.05);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.fbot p{font-size:.76rem;color:rgba(255,255,255,.18)}
+.fbadge{background:rgba(11,107,80,.15);border:1px solid rgba(11,107,80,.2);color:rgba(94,201,168,.6);font-size:.7rem;font-weight:500;padding:4px 10px;border-radius:4px}
+/* ── RESPONSIVE ── */
+@media(max-width:960px){
+  .hcont,.div-grid,.align-cards,.svc-grid,.impact-panel.active,.plat-grid,.ins-grid,.about-grid,.contact-grid,.rm-timeline{grid-template-columns:1fr}
+  .serve-grid{grid-template-columns:1fr}
+  .sgrid{grid-template-columns:repeat(2,1fr)}
+  .nl{display:none}.hbg{display:flex}
+  .fi{flex-direction:column}
+  .hstats{grid-template-columns:1fr 1fr}
+  .hstat:not(:last-child){padding-right:16px;margin-right:16px}
+  .rm-timeline::before{display:none}
+  .about-grid{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  section{padding:72px 0}
+  .hbtns{flex-direction:column}
+  .sgrid{grid-template-columns:1fr}
+  .hstats{grid-template-columns:1fr}
+  .hstat:not(:last-child){padding-right:0;margin-right:0;padding-bottom:16px;margin-bottom:16px;border-right:none;border-bottom:1px solid rgba(255,255,255,.08)}
+  .frow{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav id="nav">
+  <div class="ni">
+    <a href="#" class="logo">
+      <div class="licon"><svg viewBox="0 0 24 24"><path d="M3 12h4l3-9 4 18 3-9h4"/></svg></div>
+      <span class="ltxt">HealthInsight <span>AI Solutions</span></span>
+    </a>
+    <div class="nl">
+      <a href="#divide">The Problem</a>
+      <a href="#services">Services</a>
+      <a href="#roadmap">Roadmap</a>
+      <a href="#about">About</a>
+      <a href="#insights">Insights</a>
+    </div>
+    <a href="#contact" class="ncta">Request a Consultation</a>
+    <div class="hbg" id="hbg"><span></span><span></span><span></span></div>
+  </div>
+  <div class="mmenu" id="mm">
+    <a href="#divide">The Problem</a>
+    <a href="#services">Services</a>
+    <a href="#roadmap">Roadmap</a>
+    <a href="#serve">Who We Serve</a>
+    <a href="#about">About</a>
+    <a href="#insights">Insights</a>
+    <a href="#contact" class="mcta">Request a Consultation</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hbg-grad"></div>
+  <div class="hbg-grid"></div>
+  <div class="hbg-orb orb1"></div>
+  <div class="hbg-orb orb2"></div>
+  <div class="container">
+    <div class="hcont">
+      <div class="htxt">
+        <div class="htag">Healthcare Technology &bull; West Hartford, CT</div>
+        <h1 class="htitle">Healthcare AI for the providers <em>everyone else overlooks.</em></h1>
+        <p class="hsub">HealthInsight AI Solutions builds secure, interoperable, HIPAA-aligned AI analytics for community health centers, rural hospitals, and independent practices — the organizations serving America's most vulnerable patients, without the technology advantages of large health systems.</p>
+        <div class="hbtns">
+          <a href="#contact" class="btn btn-amber">Request a Pilot Consultation</a>
+          <a href="#services" class="btn btn-wht">Explore Our Services</a>
+        </div>
+        <div class="hstats">
+          <div class="hstat"><strong>$4.9<em>T</em></strong><span>U.S. healthcare spending — annually</span></div>
+          <div class="hstat"><strong>$265<em>B</em></strong><span>Administrative savings potential (McKinsey)</span></div>
+          <div class="hstat"><strong>330K<em>+</em></strong><span>Underserved provider organizations</span></div>
+        </div>
+      </div>
+      <div class="hvisual" aria-hidden="true">
+        <svg viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="rg1" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="rgba(94,201,168,.2)"/><stop offset="100%" stop-color="transparent"/></radialGradient>
+          </defs>
+          <circle cx="210" cy="210" r="180" fill="url(#rg1)"/>
+          <!-- Connections -->
+          <line x1="210" y1="210" x2="90" y2="120" stroke="rgba(94,201,168,.25)" stroke-width="1.5"/>
+          <line x1="210" y1="210" x2="330" y2="90" stroke="rgba(94,201,168,.2)" stroke-width="1.5"/>
+          <line x1="210" y1="210" x2="360" y2="240" stroke="rgba(94,201,168,.25)" stroke-width="1.5"/>
+          <line x1="210" y1="210" x2="300" y2="350" stroke="rgba(94,201,168,.2)" stroke-width="1.5"/>
+          <line x1="210" y1="210" x2="80" y2="330" stroke="rgba(94,201,168,.2)" stroke-width="1.5"/>
+          <line x1="210" y1="210" x2="60" y2="210" stroke="rgba(94,201,168,.15)" stroke-width="1.5"/>
+          <line x1="90" y1="120" x2="330" y2="90" stroke="rgba(94,201,168,.1)" stroke-width="1"/>
+          <line x1="330" y1="90" x2="360" y2="240" stroke="rgba(94,201,168,.1)" stroke-width="1"/>
+          <line x1="360" y1="240" x2="300" y2="350" stroke="rgba(94,201,168,.1)" stroke-width="1"/>
+          <!-- Satellite nodes -->
+          <circle cx="90" cy="120" r="8" fill="rgba(94,201,168,.4)" stroke="rgba(94,201,168,.6)" stroke-width="1.5"/>
+          <circle cx="330" cy="90" r="6" fill="rgba(94,201,168,.3)"/>
+          <circle cx="360" cy="240" r="9" fill="rgba(94,201,168,.35)" stroke="rgba(94,201,168,.5)" stroke-width="1.5"/>
+          <circle cx="300" cy="350" r="7" fill="rgba(94,201,168,.3)"/>
+          <circle cx="80" cy="330" r="6" fill="rgba(94,201,168,.25)"/>
+          <circle cx="60" cy="210" r="5" fill="rgba(94,201,168,.2)"/>
+          <!-- Center hub -->
+          <circle cx="210" cy="210" r="42" fill="rgba(11,107,80,.25)" stroke="rgba(94,201,168,.4)" stroke-width="1.5"/>
+          <circle cx="210" cy="210" r="28" fill="rgba(11,107,80,.4)" stroke="rgba(94,201,168,.6)" stroke-width="2"/>
+          <!-- Heartbeat line inside center -->
+          <path d="M192 210 h6 l4-10 6 20 4-14 4 8 h12" stroke="#5EC9A8" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- Labels -->
+          <text x="90" y="108" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.5)" font-family="DM Sans,sans-serif">FQHC</text>
+          <text x="330" y="78" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.5)" font-family="DM Sans,sans-serif">Rural Hospital</text>
+          <text x="376" y="244" text-anchor="start" font-size="9" fill="rgba(255,255,255,.5)" font-family="DM Sans,sans-serif">Payer</text>
+          <text x="300" y="370" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.5)" font-family="DM Sans,sans-serif">Small Practice</text>
+          <text x="50" y="346" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.5)" font-family="DM Sans,sans-serif">Clinic</text>
+          <text x="36" y="214" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.5)" font-family="DM Sans,sans-serif">Lab</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div id="trust">
+  <div class="trust-inner">
+    <div class="titem"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>HIPAA-Aligned Architecture</div>
+    <div class="tdiv"></div>
+    <div class="titem"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>FHIR R4 Interoperability</div>
+    <div class="tdiv"></div>
+    <div class="titem"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>AWS HIPAA-Eligible Services</div>
+    <div class="tdiv"></div>
+    <div class="titem"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>Build &bull; Consult &bull; Train</div>
+    <div class="tdiv"></div>
+    <div class="titem"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Human-Reviewable AI Outputs</div>
+  </div>
+</div>
+
+<!-- THE DIVIDE -->
+<section id="divide">
+  <div class="container">
+    <div class="div-grid">
+      <div class="div-text">
+        <span class="slabel">The Problem</span>
+        <h2>America's healthcare AI capability is concentrated at the top.</h2>
+        <p>Large hospital systems and academic medical centers have begun deploying AI to reduce administrative burden, improve billing accuracy, and extract insights from their data. These investments are working — and widening the gap.</p>
+        <p>The 330,000+ community health centers, federally qualified health centers, rural hospitals, and independent practices serving America's most underserved patient populations are largely excluded. Not because the technology doesn't exist, but because no one built them an affordable, practical, and compliant path to adoption.</p>
+        <p>HealthInsight AI Solutions is that path. We connect to existing systems without replacement, validate and govern healthcare data under HIPAA, and deliver AI-assisted analytics that clinical and administrative staff can act on — with training and governance built in from day one.</p>
+        <div class="div-quote">
+          <p>"Every dollar a community health center loses to a preventable billing error is a dollar that doesn't reach patient care. Every hour a clinician spends on documentation is an hour not spent with a patient."</p>
+          <cite>— Observed across FQHC operations nationwide (AMA / HRSA)</cite>
+        </div>
+      </div>
+      <div>
+        <div class="access-chart">
+          <div class="chart-title">AI Analytics Access by Provider Type</div>
+          <div class="cbar-row">
+            <div class="cbar-label">Large academic medical centers</div>
+            <div class="cbar-track"><div class="cbar-fill" style="width:0%;background:var(--navy)" data-w="88"></div></div>
+            <div class="cbar-pct">88%</div>
+          </div>
+          <div class="cbar-row">
+            <div class="cbar-label">Large regional hospital networks</div>
+            <div class="cbar-track"><div class="cbar-fill" style="width:0%;background:var(--navy)" data-w="74"></div></div>
+            <div class="cbar-pct">74%</div>
+          </div>
+          <div class="cbar-row">
+            <div class="cbar-label">Mid-size community hospitals</div>
+            <div class="cbar-track"><div class="cbar-fill" style="width:0%;background:var(--teal)" data-w="41"></div></div>
+            <div class="cbar-pct">41%</div>
+          </div>
+          <div class="cbar-row">
+            <div class="cbar-label">Independent practices</div>
+            <div class="cbar-track"><div class="cbar-fill" style="width:0%;background:var(--amber)" data-w="14"></div></div>
+            <div class="cbar-pct">14%</div>
+          </div>
+          <div class="cbar-row">
+            <div class="cbar-label">Federally Qualified Health Centers</div>
+            <div class="cbar-track"><div class="cbar-fill" style="width:0%;background:#C0392B" data-w="9"></div></div>
+            <div class="cbar-pct">9%</div>
+          </div>
+          <div class="cbar-row" style="margin-bottom:0">
+            <div class="cbar-label">Rural / critical-access hospitals</div>
+            <div class="cbar-track"><div class="cbar-fill" style="width:0%;background:#C0392B" data-w="7"></div></div>
+            <div class="cbar-pct">7%</div>
+          </div>
+          <div class="chart-note">Illustrative estimates based on reported EHR AI feature adoption and market research. Sources: ONC Health IT Dashboard, HIMSS Analytics, HRSA UDS data.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATISTICS -->
+<section id="stats">
+  <div class="container">
+    <div class="stats-hd">
+      <span class="slabel">The Scale of the Problem</span>
+      <h2>Numbers that define the national need.</h2>
+      <p>The administrative and operational challenges HealthInsight addresses are among the most significant and well-documented in American healthcare.</p>
+    </div>
+    <div class="sgrid">
+      <div class="scard">
+        <div class="snum" data-val="4.9" data-suffix="T" data-prefix="$">$4.9T</div>
+        <div class="sdesc">Annual U.S. healthcare expenditure — nearly 18% of GDP</div>
+        <div class="ssrc">CMS National Health Expenditure Data, 2023</div>
+      </div>
+      <div class="scard">
+        <div class="snum" data-val="265" data-suffix="B" data-prefix="$">$265B</div>
+        <div class="sdesc">Estimated annual savings from administrative simplification</div>
+        <div class="ssrc">McKinsey &amp; Company, Healthcare Administrative Simplification, 2021</div>
+      </div>
+      <div class="scard">
+        <div class="snum" data-val="32" data-suffix="M+">32M+</div>
+        <div class="sdesc">Patients served annually by FQHC organizations nationally</div>
+        <div class="ssrc">HRSA Uniform Data System, 2022</div>
+      </div>
+      <div class="scard">
+        <div class="snum" data-val="2" data-suffix="x">2x</div>
+        <div class="sdesc">Hours spent on administrative tasks per hour of direct patient care</div>
+        <div class="ssrc">Annals of Internal Medicine, Physician Time Allocation, 2016; AMA updates</div>
+      </div>
+      <div class="scard">
+        <div class="snum" data-val="18" data-suffix="%">~18%</div>
+        <div class="sdesc">Average claims denial rate at community health centers</div>
+        <div class="ssrc">NACHC, MGMA, and FQHC industry operational benchmarks</div>
+      </div>
+      <div class="scard">
+        <div class="snum" data-val="140" data-suffix="+">140+</div>
+        <div class="sdesc">Rural hospital closures in the U.S. since 2010, compounding access gaps</div>
+        <div class="ssrc">Chartis Center for Rural Health, Rural Hospital Closures Report, 2023</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEDERAL ALIGNMENT -->
+<section id="align">
+  <div class="container">
+    <div class="align-hd">
+      <span class="slabel">National Priority Alignment</span>
+      <h2>Advancing federal health IT and AI policy goals.</h2>
+      <p>HealthInsight AI Solutions is directly aligned with the documented priorities of three major federal frameworks shaping American healthcare and technology policy.</p>
+    </div>
+    <div class="align-cards">
+      <div class="acard">
+        <div class="acard-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+        <h3>2024–2030 Federal Health IT Strategic Plan</h3>
+        <p>The ASTP/ONC plan sets four national goals: promote health and wellness, enhance care delivery, accelerate research, and connect the health system through data. HealthInsight advances all four — with specific focus on health equity, data access, and responsible innovation.</p>
+        <div class="acard-pills">
+          <span class="acard-pill">Health equity</span>
+          <span class="acard-pill">Data interoperability</span>
+          <span class="acard-pill">Care delivery</span>
+          <span class="acard-pill">Responsible AI</span>
+        </div>
+      </div>
+      <div class="acard">
+        <div class="acard-icon"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+        <h3>Federal AI Policy — EO 14179 &amp; AI Action Plan</h3>
+        <p>Executive Order 14179 (January 2025) and America's AI Action Plan (July 2025) prioritize accelerating U.S. AI adoption and leadership. HealthInsight extends AI adoption into healthcare segments where it has not yet reached — turning a national policy goal into operational reality for underserved providers.</p>
+        <div class="acard-pills">
+          <span class="acard-pill">AI acceleration</span>
+          <span class="acard-pill">Responsible deployment</span>
+          <span class="acard-pill">U.S. leadership</span>
+          <span class="acard-pill">Sector adoption</span>
+        </div>
+      </div>
+      <div class="acard">
+        <div class="acard-icon"><svg viewBox="0 0 24 24"><path d="M20 7H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M16 3H8v4h8V3z"/></svg></div>
+        <h3>HRSA FQHC Program &amp; Health Center Fund</h3>
+        <p>HRSA's Health Center program funds 1,400+ FQHC organizations at 15,000+ sites serving 32 million patients annually. These organizations face significant administrative burden with limited IT resources. HealthInsight builds specifically for their capacity and compliance requirements.</p>
+        <div class="acard-pills">
+          <span class="acard-pill">1,400+ FQHCs</span>
+          <span class="acard-pill">32M patients served</span>
+          <span class="acard-pill">Underserved communities</span>
+          <span class="acard-pill">HRSA-aligned</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="svc-hd">
+      <span class="slabel">What We Do</span>
+      <h2>Build. Consult. Train.</h2>
+      <p>Three services, one mission. Software alone doesn't create value in healthcare — the delivery model must include governance, integration, and the people who use the tools.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card">
+        <div class="svc-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M17.5 14v6m-3-3h6"/></svg></div>
+        <h3>Custom AI &amp; Analytics Development</h3>
+        <p>We build bespoke analytics pipelines, data-quality workflows, risk stratification models, denial-pattern analysis, administrative summarization, and AI-assisted reporting — designed around each client's specific data, systems, and operational needs.</p>
+        <div class="svc-metric"><strong>~$126K</strong><span>average annual revenue recovered per FQHC through denial-rate reduction</span></div>
+        <div class="svc-chips"><span class="chip">Claims analytics</span><span class="chip">Risk stratification</span><span class="chip">Reporting automation</span><span class="chip">Data quality</span></div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+        <h3>Consulting &amp; Integration</h3>
+        <p>We assess existing data sources, workflows, security posture, and integration options — then design a plan that works with the systems clients already use. No EHR replacement required. No rip-and-replace. We connect to what you have and make it usable.</p>
+        <div class="svc-metric"><strong>5 min</strong><span>cross-location dashboard view vs. 1 full day of manual Excel work</span></div>
+        <div class="svc-chips"><span class="chip">FHIR R4</span><span class="chip">HL7 v2</span><span class="chip">Workflow design</span><span class="chip">HIPAA review</span></div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h3>Training &amp; Workforce Enablement</h3>
+        <p>We deliver structured role-specific training, governance playbooks, change management support, and a 90-day post-deployment assistance window. AI adoption in healthcare depends on whether staff understand it, trust it, and are supported to use it responsibly.</p>
+        <div class="svc-metric"><strong>2.5 hrs</strong><span>returned per clinician per day through documentation AI support</span></div>
+        <div class="svc-chips"><span class="chip">Staff training</span><span class="chip">AI governance</span><span class="chip">User guides</span><span class="chip">90-day support</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BEFORE / AFTER IMPACT -->
+<section id="impact">
+  <div class="container">
+    <div class="impact-hd">
+      <span class="slabel">Real-World Impact</span>
+      <h2>What changes when HealthInsight goes live.</h2>
+      <p>Five concrete before-and-after scenarios based on documented patterns of need across FQHCs, rural hospitals, and independent practices.</p>
+    </div>
+    <div class="impact-tabs">
+      <button class="itab active" onclick="showTab('claims')">Claims Denials</button>
+      <button class="itab" onclick="showTab('docs')">Documentation Time</button>
+      <button class="itab" onclick="showTab('vis')">Data Visibility</button>
+      <button class="itab" onclick="showTab('rep')">Quality Reporting</button>
+      <button class="itab" onclick="showTab('risk')">Patient Risk</button>
+    </div>
+    <div id="claims" class="impact-panel active">
+      <div class="ip-before"><div class="ip-label">Before HealthInsight</div><h3>~18% claims denial rate, rework done manually</h3><p>The billing team reviews denied claims one by one — days of investigation, phone calls to insurers, resubmissions. Some claims expire unpaid. The pattern causing the denials (a missing modifier, a code combination the insurer rejects) is invisible to any single reviewer.</p></div>
+      <div class="ip-after"><div class="ip-label">With HealthInsight AI</div><h3>Pattern identified, pre-submission flags active</h3><p>HealthInsight analyzes 12 months of claims history and identifies the systematic errors: specific code combinations triggering specific payers' automated denials. A pre-submission check flags at-risk claims before they leave the building. The billing team fixes the problem once, at the source.</p><div class="ip-impact"><strong>~$126K</strong><span>estimated annual revenue recovered for a 12,000-visit/year FQHC at $150 avg. reimbursement</span></div></div>
+    </div>
+    <div id="docs" class="impact-panel">
+      <div class="ip-before"><div class="ip-label">Before HealthInsight</div><h3>15–20 minutes of documentation per patient visit</h3><p>After every patient encounter, the clinician spends 15 to 20 minutes completing documentation — selecting diagnosis codes, writing structured notes, verifying procedure codes. Many finish charts at home, late at night. This "pajama time" is a primary driver of clinician burnout.</p></div>
+      <div class="ip-after"><div class="ip-label">With HealthInsight AI</div><h3>Draft summaries, code suggestions, completeness checks</h3><p>HealthInsight surfaces a structured draft summary based on what was entered during the encounter, suggests appropriate billing codes, and flags incomplete documentation before sign-off. Less searching, less second-guessing, faster close.</p><div class="ip-impact"><strong>2.5 hrs/day</strong><span>returned per clinician seeing 18 patients — 5–8 minutes saved per visit</span></div></div>
+    </div>
+    <div id="vis" class="impact-panel">
+      <div class="ip-before"><div class="ip-label">Before HealthInsight</div><h3>Three locations, three separate EHR reports, Excel, one full day</h3><p>A clinic manager running three locations must export reports from each system individually, combine them manually in Excel, and build charts by hand. The process takes an entire workday, and by the time it's done, the data is already two weeks old.</p></div>
+      <div class="ip-after"><div class="ip-label">With HealthInsight AI</div><h3>One real-time dashboard, all locations, 5 minutes</h3><p>A single dashboard shows all locations together in near real time: patient volumes, denial rates by payer, documentation completion rates, referral patterns, staff metrics. Problems — a spike in denials at one site, a drop in throughput — are visible in days, not weeks.</p><div class="ip-impact"><strong>5 minutes</strong><span>vs. one full workday — the same operational picture, current and always accessible</span></div></div>
+    </div>
+    <div id="rep" class="impact-panel">
+      <div class="ip-before"><div class="ip-label">Before HealthInsight</div><h3>Two weeks of manual data cleaning for one grant report</h3><p>A grant reporting deadline approaches. Staff need to show diabetes screening rates across the past year. The data is fragmented — inconsistently coded, missing fields, duplicates from different EHR instances. A staff member spends two weeks cleaning it to produce one report.</p></div>
+      <div class="ip-after"><div class="ip-label">With HealthInsight AI</div><h3>Quality metrics continuously tracked, report in 20 minutes</h3><p>HealthInsight's validation pipeline flags data quality issues as they happen — missing fields, inconsistent codes, duplicates. Quality metrics are monitored continuously. When the deadline arrives, the report is ready in 20 minutes, and the data is already clean.</p><div class="ip-impact"><strong>20 minutes</strong><span>vs. two weeks — compliance evidence always current and audit-ready</span></div></div>
+    </div>
+    <div id="risk" class="impact-panel">
+      <div class="ip-before"><div class="ip-label">Before HealthInsight</div><h3>No systematic way to identify high-risk patients proactively</h3><p>Care coordinators rely on memory, provider referrals, or sporadic chart reviews. High-risk patients fall through the cracks until something goes wrong — at which point the intervention is reactive, more expensive, and harder on the patient.</p></div>
+      <div class="ip-after"><div class="ip-label">With HealthInsight AI</div><h3>Prioritized weekly outreach list for care coordinators</h3><p>HealthInsight's risk stratification model analyzes visit patterns, diagnoses, medication indicators, and documented social factors to surface patients with elevated risk of avoidable ED visits. Care coordinators receive a prioritized list for proactive outreach — reviewed by a clinician before any action is taken.</p><div class="ip-impact"><strong>$1,500–$2,500</strong><span>saved per averted ED visit — plus a better outcome for the patient</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section id="roadmap">
+  <div class="container">
+    <div class="rm-hd">
+      <span class="slabel">Our Roadmap</span>
+      <h2>A phased plan built for execution.</h2>
+      <p>HealthInsight is being built in deliberate phases — each one generating verifiable deliverables and measurable evidence of progress.</p>
+    </div>
+    <div class="rm-timeline">
+      <div class="rm-phase">
+        <div class="rm-dot rm-dot-active">
+          <span>Phase</span><strong>01</strong>
+        </div>
+        <div class="rm-time">Months 1–3</div>
+        <div class="rm-title">Foundation</div>
+        <div class="rm-desc">Platform architecture, compliance framework, HIPAA controls, FHIR R4 ingestion design, advisor network, product scope.</div>
+      </div>
+      <div class="rm-phase">
+        <div class="rm-dot rm-dot-active">
+          <span>Phase</span><strong>02</strong>
+        </div>
+        <div class="rm-time">Months 3–6</div>
+        <div class="rm-title">MVP Build</div>
+        <div class="rm-desc">Secure portal, role-based access, data ingestion pipeline, validation engine, dashboards, audit logging, administrative summarization prototype.</div>
+      </div>
+      <div class="rm-phase">
+        <div class="rm-dot rm-dot-inactive">
+          <span>Phase</span><strong>03</strong>
+        </div>
+        <div class="rm-time">Months 6–12</div>
+        <div class="rm-title">Pilot Deployments</div>
+        <div class="rm-desc">First client engagements with FQHCs or health center partners. Baseline measurement, feedback collection, outcome tracking.</div>
+      </div>
+      <div class="rm-phase">
+        <div class="rm-dot rm-dot-inactive">
+          <span>Phase</span><strong>04</strong>
+        </div>
+        <div class="rm-time">Months 12–18</div>
+        <div class="rm-title">Production Hardening</div>
+        <div class="rm-desc">Monitoring, incident response, model governance, training programs, client support infrastructure, impact reporting.</div>
+      </div>
+      <div class="rm-phase">
+        <div class="rm-dot rm-dot-inactive">
+          <span>Phase</span><strong>05</strong>
+        </div>
+        <div class="rm-time">18+ Months</div>
+        <div class="rm-title">Scale</div>
+        <div class="rm-desc">Geographic expansion, additional analytics modules, specialized offerings for payers and rural hospitals, workforce training at scale.</div>
+      </div>
+    </div>
+    <div class="rm-note">
+      <p>Every phase generates specific, documented deliverables — architecture diagrams, prototype screenshots, pilot data, letters of intent, training completion records, and post-deployment impact reports — so that progress is always verifiable, not just claimed.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHO WE SERVE -->
+<section id="serve">
+  <div class="container">
+    <div class="serve-hd">
+      <span class="slabel">Who We Serve</span>
+      <h2>Built for organizations large platforms overlook.</h2>
+      <p>Our pricing, architecture, and delivery model are designed for the actual constraints of underserved healthcare organizations — not adapted downward from enterprise products.</p>
+    </div>
+    <div class="serve-grid">
+      <div class="svc2">
+        <div class="s2icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+        <div><h3>Federally Qualified Health Centers</h3><p>FQHCs serve large proportions of uninsured and Medicaid patients under significant administrative and quality-reporting requirements. We reduce denial rates, automate reporting, and provide cross-site visibility — without replacing existing EHR systems.</p></div>
+      </div>
+      <div class="svc2">
+        <div class="s2icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div><h3>Rural &amp; Critical-Access Hospitals</h3><p>Rural hospitals operate on thin margins serving geographically isolated communities. Over 140 have closed since 2010. AI-assisted administrative support and real-time operational visibility help them do more with what they have.</p></div>
+      </div>
+      <div class="svc2">
+        <div class="s2icon"><svg viewBox="0 0 24 24"><path d="M20 7H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M16 3H8v4h8V3z"/></svg></div>
+        <div><h3>Independent &amp; Small-Group Practices</h3><p>Independent practices with limited administrative staff face outsized documentation and billing burdens. We automate the workflows that consume staff time without requiring a dedicated data team to maintain the system.</p></div>
+      </div>
+      <div class="svc2">
+        <div class="s2icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+        <div><h3>Regional Payers &amp; Health Plans</h3><p>Regional insurers and health plans serving underserved markets need analytics that works across fragmented provider networks. We build interoperable, HIPAA-aligned pipelines for their specific operational context.</p></div>
+      </div>
+    </div>
+    <div class="serve-callout"><p>HealthInsight does not replace your existing EHR or core systems. We connect to what you already have, make that data usable, and deliver insights your team can act on — with training and governance built in.</p></div>
+  </div>
+</section>
+
+<!-- PLATFORM -->
+<section id="platform">
+  <div class="container">
+    <div class="plat-hd">
+      <span class="slabel">Technical Approach</span>
+      <h2>Security and compliance by construction.</h2>
+      <p>Every architectural decision is made with HIPAA alignment, interoperability, and responsible AI in mind — from the first line of infrastructure code.</p>
+    </div>
+    <div class="plat-grid">
+      <div class="pblock"><h3><span class="pdot"></span>Interoperability-first data ingestion</h3><p>HL7 FHIR R4-aligned data connectors, schema validation, PHI field classification, USCDI-compatible data structures. We work with the standards your EHR already supports — including HL7 v2 feeds, certified bulk export, and flat-file workflows where FHIR is not yet available.</p></div>
+      <div class="pblock"><h3><span class="pdot"></span>HIPAA-aligned cloud architecture</h3><p>AWS with executed Business Associate Agreement, AES-256 encryption at rest and in transit, IAM role-based access control, CloudTrail audit logging for every API call, multi-tenant data isolation, documented backup and recovery procedures, and defined incident response processes.</p></div>
+      <div class="pblock"><h3><span class="pdot"></span>Human-in-the-loop AI governance</h3><p>All AI outputs are human-reviewable operational support — not autonomous clinical decisions. Every deployed model has a model card documenting purpose, inputs, outputs, known limitations, validation results, and review requirements before any output affects operations.</p></div>
+      <div class="pblock"><h3><span class="pdot"></span>Multi-tenant data isolation</h3><p>Each client's data is isolated at the data, API, and application layers with strict tenant-level partitioning. No cross-client data access is permitted at any layer. Tenant isolation is validated before every client onboarding using a defined security checklist.</p></div>
+    </div>
+    <div class="ptags">
+      <span class="ptag">FHIR R4</span><span class="ptag">HIPAA / HITECH</span><span class="ptag">AWS BAA</span><span class="ptag">AES-256</span><span class="ptag">CloudTrail Audit</span><span class="ptag">IAM RBAC</span><span class="ptag">Tenant Isolation</span><span class="ptag">Vendor-Neutral</span><span class="ptag">Human-in-the-Loop</span><span class="ptag">HL7 v2 / USCDI</span>
+    </div>
+  </div>
+</section>
+
+<!-- INSIGHTS -->
+<section id="insights">
+  <div class="container">
+    <div class="ins-hd">
+      <span class="slabel">Insights &amp; Resources</span>
+      <h2>Thought leadership on healthcare AI for underserved providers.</h2>
+      <p>Original analysis and practical guidance for healthcare administrators, clinicians, and policy professionals navigating AI adoption.</p>
+    </div>
+    <div class="ins-grid">
+      <div class="ins-card">
+        <div class="ins-cover c1"></div>
+        <div class="ins-body">
+          <div class="ins-cat">Healthcare AI Access</div>
+          <h3>The Healthcare AI Divide: Why Community Health Centers Are Being Left Behind</h3>
+          <p>The largest health systems are deploying AI at scale. The 330,000+ smaller providers serving America's most vulnerable patients are not. Here is why the market has failed to reach them — and what a different approach looks like.</p>
+          <a href="#contact" class="ins-link">Read more <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+      <div class="ins-card">
+        <div class="ins-cover c2"></div>
+        <div class="ins-body">
+          <div class="ins-cat">Revenue Cycle</div>
+          <h3>Claims Denials at FQHCs: A Recoverable Problem That AI Can Help Solve</h3>
+          <p>An 18% denial rate at a community health center is not just a billing problem — it is a patient care problem. Every dollar lost to a preventable denial is a dollar that does not reach clinical operations. AI pattern-detection changes that equation.</p>
+          <a href="#contact" class="ins-link">Read more <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+      <div class="ins-card">
+        <div class="ins-cover c3"></div>
+        <div class="ins-body">
+          <div class="ins-cat">Standards &amp; Compliance</div>
+          <h3>FHIR R4 in Practice: What the Standard Means for Smaller Healthcare Organizations</h3>
+          <p>HL7 FHIR R4 is the most important healthcare data standard in current use — and the 21st Century Cures Act mandated it for certified EHRs. Here is what it means for community health centers trying to use their data more effectively.</p>
+          <a href="#contact" class="ins-link">Read more <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-card">
+        <div class="ab-circle"><span class="ab-init">BS</span></div>
+        <div class="ab-name">Binisha Shrestha</div>
+        <div class="ab-title">Founder &amp; Chief Executive Officer<br>HealthInsight AI Solutions, Inc.</div>
+        <div class="ab-creds">
+          <div class="cred">M.S. Computer Science</div>
+          <div class="cred">AI Engineer</div>
+          <div class="cred">Built Enterprise insurance AI platform</div>
+          <div class="cred">API Gateway · Lambda · Step Functions · Aurora · Athena</div>
+          <div class="cred">FHIR R4 · HIPAA compliance frameworks</div>
+          <div class="cred">Healthcare AI for underserved providers</div>
+        </div>
+      </div>
+      <div class="about-txt">
+        <span class="slabel">About the Founder</span>
+        <h2>Built by someone who has already built this kind of system.</h2>
+        <p>Binisha Shrestha founded HealthInsight AI Solutions after recognizing that the healthcare AI market was focused almost entirely on large health systems — leaving the organizations serving the most vulnerable patients without a practical path to adoption.</p>
+        <p>Her background is in building production AI and data systems in regulated industries at enterprise scale. The transition from insurance AI to healthcare AI is domain adaptation — applying proven engineering capability to a new but structurally similar problem.</p>
+        <div class="hubcap-box">
+          <h3>Prior Technical Work: The HubCap Platform</h3>
+          <p>At Itlize Global, contracted to Capitol Indemnity Corp, Ms. Shrestha architected and developed HubCap — a multi-instance, auto-scaling serverless AI workflow platform that powers intelligent insurance operations. The platform processes regulated personal data, automates complex multi-step workflows, integrates with enterprise external platforms, and manages data pipelines for analytics — in a production regulated-industry environment.</p>
+          <div class="hubcap-tags">
+            <span class="hbtag">API Gateway</span><span class="hbtag">Lambda</span><span class="hbtag">Step Functions</span><span class="hbtag">Aurora DB</span><span class="hbtag">DynamoDB</span><span class="hbtag">Athena</span><span class="hbtag">Glue</span><span class="hbtag">S3</span><span class="hbtag">IAM</span><span class="hbtag">CloudWatch</span>
+          </div>
+        </div>
+        <p>The same AWS architecture, the same compliance-first design, and the same pattern of transforming regulated data into actionable analytics — applied now to healthcare data, FHIR standards, and HIPAA requirements.</p>
+        <div class="about-highlights">
+          <span class="ahl">AWS Serverless Architecture</span><span class="ahl">FHIR R4 Standards</span><span class="ahl">HIPAA Compliance</span><span class="ahl">Enterprise-Scale Systems</span><span class="ahl">Regulated Industry AI</span><span class="ahl">Healthcare Data Governance</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="ct-text">
+        <span class="slabel">Get In Touch</span>
+        <h2>Ready to bring AI to your organization?</h2>
+        <p>Whether you are a health center exploring a pilot, a policy professional, a researcher, or a potential partner — we want to hear from you. We are accepting pilot inquiries from community health centers and rural hospitals.</p>
+        <div class="cinfo">
+          <div class="ci">
+            <div class="ci-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+            <div><strong>Email</strong><a href="mailto:contact@healthinsightaisolutions.com">contact@healthinsightaisolutions.com</a></div>
+          </div>
+          <div class="ci">
+            <div class="ci-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div><strong>Location</strong><span>West Hartford, Connecticut</span></div>
+          </div>
+          <div class="ci">
+            <div class="ci-icon"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+            <div><strong>Entity</strong><span>HealthInsight AI Solutions, Inc.</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="cform">
+        <div class="frow">
+          <div class="fg"><label>First Name</label><input type="text" placeholder="Jane"></div>
+          <div class="fg"><label>Last Name</label><input type="text" placeholder="Smith"></div>
+        </div>
+        <div class="fg"><label>Email</label><input type="email" placeholder="jane@clinic.org"></div>
+        <div class="fg"><label>Organization</label><input type="text" placeholder="Valley Community Health Center"></div>
+        <div class="fg">
+          <label>Organization Type</label>
+          <select>
+            <option value="" disabled selected>Select type</option>
+            <option>Federally Qualified Health Center (FQHC)</option>
+            <option>Rural or Critical-Access Hospital</option>
+            <option>Independent Practice or Clinic</option>
+            <option>Regional Payer or Health Plan</option>
+            <option>Healthcare Consulting / Advisory</option>
+            <option>Research or Academic Institution</option>
+            <option>Policy / Government</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="fg"><label>How can we help?</label><textarea placeholder="Tell us about your organization and what you are hoping to solve."></textarea></div>
+        <button class="fsub" id="fsub">Send Message</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="fi">
+      <div class="fb">
+        <a href="#" class="logo"><div class="licon"><svg viewBox="0 0 24 24"><path d="M3 12h4l3-9 4 18 3-9h4"/></svg></div><span class="ltxt" style="color:rgba(255,255,255,.7)">HealthInsight <span>AI Solutions</span></span></a>
+        <p>Bringing secure, interoperable AI analytics to community health centers, rural hospitals, and independent practices — the organizations that need it most.</p>
+      </div>
+      <div class="fl">
+        <h4>Company</h4>
+        <ul><li><a href="#divide">The Problem</a></li><li><a href="#services">Services</a></li><li><a href="#roadmap">Our Roadmap</a></li><li><a href="#about">About</a></li><li><a href="#contact">Contact</a></li></ul>
+      </div>
+      <div class="fl">
+        <h4>Approach</h4>
+        <ul><li><a href="#platform">Technical Platform</a></li><li><a href="#serve">Who We Serve</a></li><li><a href="#impact">Real-World Impact</a></li><li><a href="#align">Federal Alignment</a></li></ul>
+      </div>
+      <div class="fl">
+        <h4>Resources</h4>
+        <ul><li><a href="#insights">Insights</a></li><li><a href="#contact">Request a Pilot</a></li><li><a href="mailto:contact@healthinsightaisolutions.com">Email Us</a></li></ul>
+      </div>
+    </div>
+    <div class="fbot">
+      <p>&copy; 2025 HealthInsight AI Solutions, Inc. &bull; West Hartford, Connecticut &bull; All rights reserved.</p>
+      <span class="fbadge">HIPAA-Aligned &bull; FHIR R4 &bull; Vendor-Neutral &bull; Human-in-the-Loop</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Nav scroll effect
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+}, {passive: true});
+
+// Mobile menu
+document.getElementById('hbg').addEventListener('click', () => {
+  const mm = document.getElementById('mm');
+  mm.style.display = mm.style.display === 'block' ? 'none' : 'block';
+});
+document.querySelectorAll('.mmenu a').forEach(a => {
+  a.addEventListener('click', () => { document.getElementById('mm').style.display = 'none'; });
+});
+
+// Impact tabs
+function showTab(id) {
+  document.querySelectorAll('.impact-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.itab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.currentTarget.classList.add('active');
+}
+
+// Animate chart bars and stat counters on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(el => {
+    if (el.isIntersecting) {
+      // Chart bars
+      el.target.querySelectorAll('.cbar-fill').forEach(bar => {
+        const w = bar.dataset.w;
+        setTimeout(() => { bar.style.width = w + '%'; }, 200);
+      });
+      // Stat counters (just fade in — values already shown)
+      el.target.querySelectorAll('.snum').forEach(s => {
+        s.style.opacity = '0';
+        s.style.transform = 'translateY(10px)';
+        s.style.transition = 'opacity .5s, transform .5s';
+        setTimeout(() => { s.style.opacity = '1'; s.style.transform = 'none'; }, 300);
+      });
+      observer.unobserve(el.target);
+    }
+  });
+}, { threshold: 0.25 });
+
+document.querySelectorAll('#divide, #stats').forEach(s => observer.observe(s));
+
+// Smooth active nav
+const sections = document.querySelectorAll('section[id], div[id="trust"]');
+const navLinks = document.querySelectorAll('.nl a');
+const sectionObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(l => l.style.color = '');
+      const active = document.querySelector(`.nl a[href="#${entry.target.id}"]`);
+      if (active) active.style.color = '#fff';
+    }
+  });
+}, { threshold: 0.4 });
+sections.forEach(s => sectionObserver.observe(s));
+
+// Contact form
+document.getElementById('fsub').addEventListener('click', function() {
+  this.textContent = 'Message sent — we will be in touch soon.';
+  this.style.background = 'var(--green)';
+  setTimeout(() => {
+    this.textContent = 'Send Message';
+    this.style.background = '';
+  }, 4000);
+});
+</script>
+</body>
+</html>
