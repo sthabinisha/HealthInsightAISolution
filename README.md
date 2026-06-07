@@ -1,6 +1,4 @@
-from pathlib import Path
-
-readme_md = """# HealthInsight AI Solutions Website Exhibit
+HealthInsight AI Solutions Website
 
 ## Purpose of this Exhibit
 
@@ -57,57 +55,3 @@ The website includes the following major sections:
 
 10. **Founder Background and Contact**  
     Presents the founder’s technical background, company location, and consultation pathway.
-
-## Relevance to the RFE Response
-
-This website exhibit supports the RFE response by helping show:
-
-### Prong 1 — National Importance
-
-The website explains how HealthInsight AI Solutions addresses nationally significant healthcare problems, including administrative waste, poor interoperability, physician documentation burden, rural healthcare fragility, and unequal access to AI-enabled healthcare technology.
-
-It also connects the company’s proposed work to federal priorities involving health IT modernization, AI adoption, data interoperability, and improved care delivery.
-
-### Prong 2 — Well Positioned to Advance the Endeavor
-
-The website shows concrete steps toward execution, including a defined market, public-facing service model, technical approach, implementation roadmap, and pilot-consultation pathway. It helps demonstrate that the proposed endeavor is being developed as an actual operating business rather than remaining only at the idea stage.
-
-### Prong 3 — Benefit of Waiving Labor Certification
-
-The website supports the argument that the endeavor is entrepreneurial and market-facing. It shows that HealthInsight AI Solutions is positioned to serve multiple healthcare organizations through independent business activity, rather than depending on a single U.S. employer-sponsored position.
-
-## Technical Notes
-
-The website is implemented as a public-facing business website with responsive layout, modern styling, interactive page behavior, service descriptions, policy-alignment content, and contact functionality intended for deployment under the HealthInsight AI Solutions domain.
-
-The site includes:
-
-- Responsive navigation
-- Mobile-friendly layout
-- Service and impact sections
-- Roadmap presentation
-- Federal-priority alignment section
-- Contact form interface
-- Search engine and social-sharing metadata
-- Professional branding and public-facing messaging
-
-The website may be deployed, hosted, or further integrated with additional backend functionality as the company advances through MVP, pilot, and production stages.
-
-## Compliance and Accuracy Notes
-
-The website uses the phrase “HIPAA-aligned” rather than claiming that the company or platform is fully HIPAA certified. This is intentional. HIPAA compliance depends on actual client relationships, data handling practices, business associate agreements, administrative safeguards, technical safeguards, and operational controls.
-
-The website also presents AI outputs as decision-support and operational-support tools, not as autonomous medical decision-makers. This framing is important because HealthInsight AI Solutions’ proposed services are intended to support healthcare professionals and administrative staff, not replace licensed clinical judgment.
-
-Any final version submitted with the RFE should be reviewed by immigration counsel to ensure that all claims are accurate, supportable, and consistent with the broader RFE response package.
-"""
-
-readme_txt = readme_md.replace("# ", "").replace("## ", "").replace("### ", "")
-
-md_path = Path("/mnt/data/README_HealthInsight_AI_Website_RFE_Updated.md")
-txt_path = Path("/mnt/data/README_HealthInsight_AI_Website_RFE_Updated.txt")
-md_path.write_text(readme_md, encoding="utf-8")
-txt_path.write_text(readme_txt, encoding="utf-8")
-
-print(f"Created: {md_path}")
-print(f"Created: {txt_path}")
