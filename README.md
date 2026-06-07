@@ -4,7 +4,6 @@ readme_md = """# HealthInsight AI Solutions Website Exhibit
 
 ## Purpose of this Exhibit
 
-This README accompanies the HealthInsight AI Solutions website files submitted as part of the EB-2 National Interest Waiver Response to Request for Evidence.
 
 The website is intended to demonstrate that HealthInsight AI Solutions, Inc. has moved beyond a general business concept and has begun developing a concrete public-facing web presence, service model, technical positioning, and implementation roadmap. The website presents the company’s mission, target market, service offerings, national-need rationale, implementation phases, and founder background in a format designed for prospective healthcare clients, partners, advisors, and reviewers.
 
